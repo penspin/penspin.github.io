@@ -41,12 +41,213 @@
 </head>
 
 <div class="header">
-		<center><h1>Lessons from Learning to Spin “Pens”</h1></center>
-		<div class="content-div"></div>
+	<center><h1>Lessons from Learning to Spin “Pens”</h1></center>
+	<div class="content-div"></div>
+	<center>
+		<a href="https://wang59695487.github.io/" target="_blank" style="font-size:18px">Jun Wang</a><sup style="font-size:12px">&nbsp*,1</sup>,&nbsp
+		<a href="https://yingyuan0414.github.io/" target="_blank" style="font-size:18px">Ying Yuan</a><sup style="font-size:12px">&nbsp*,2</sup>,&nbsp
+		<a href="https://www.linkedin.com/in/haichuan-che-7338721b1/" target="_blank" style="font-size:18px">Haichuan Che</a><sup style="font-size:12px">&nbsp*,1</sup>,&nbsp
+		<a href="https://haozhi.io/" target="_blank" style="font-size:18px">Haozhi Qi</a><sup style="font-size:12px">&nbsp*,3</sup></br>
+		<a href="https://people.eecs.berkeley.edu/~yima/" target="_blank" style="font-size:18px">Yi Ma</a><sup style="font-size:12px">&nbsp3</sup>,&nbsp
+		<a href="https://people.eecs.berkeley.edu/~malik/" target="_blank" style="font-size:18px">Jitendra Malik</a><sup style="font-size:12px">&nbsp3</sup>,&nbsp
+		<a href="https://xiaolonw.github.io/" target="_blank" style="font-size:18px">Xiaolong Wang</a><sup style="font-size:12px">&nbsp1</sup>
+	</center>
+
+	<div class="content-div"></div>
+	<center>
+		<sup style="font-size:12px">1</sup>&nbspUC San Diego,
+		<sup style="font-size:12px">2</sup>&nbspCarnegie Mellon University,
+		<sup style="font-size:12px">3</sup>&nbspUC Berkeley
+	</center>
+
+	<div class="content-div"></div>
+	<center>
+		<div class="btn-group" role="group">
+
+			<a href="">
+				<button type="button" class="btn btn-dark"><span class="icon">
+					<i class="fas fa-file-pdf"></i> Paper
+				</span></button>
+			</a>
+
+			<a href="">
+				<button type="button" class="btn btn-dark"><span class="icon">
+					<i class="fab fa-github"></i> Code
+				</span></button>
+			</a>
+
+<!--			<a href="">-->
+<!--				<button type="button" class="btn btn-dark"><span class="icon">-->
+<!--					<i class="fab fa-youtube"></i> Video-->
+<!--				</span></button>-->
+<!--			</a>-->
+
+<!--			<a href="">-->
+<!--				<button type="button" class="btn btn-dark"><span class="icon">-->
+<!--					<i class="fab fa-twitter"></i> Twitter-->
+<!--				</span></button>-->
+<!--        	</a>-->
+
+		</div>
+	</center>
 </div>
 
 <div class="container">
 	<!--------------------- abstract --------------------->
+	<center>
+		<h2> Abstract </h2>
+		<div class="content-div"></div>
+		<p style="width:75%; text-align: justify; white-space: normal;"> In-hand manipulation of pen-like objects is an important skill in our daily lives, as many tools such as hammers and screwdrivers are similarly shaped. However, current learning-based methods struggle with this task due to a lack of high-quality demonstrations and the significant gap between simulation and the real world. In this work, we push the boundaries of learning-based in-hand manipulation systems by demonstrating the capability to spin pen-like objects. We first use reinforcement learning to train an oracle policy with privileged information and generate a high-fidelity trajectory dataset in simulation. This serves two purposes: 1) pre-training a sensorimotor policy in simulation; 2) conducting open-loop trajectory replay in the real world. We then fine-tune the sensorimotor policy using these real-world trajectories to adapt it to the real world dynamics. With less than 50 trajectories, our policy learns to rotate more than ten pen-like objects with different physical properties for multiple revolutions. We present a comprehensive analysis of our design choices and share the lessons learned during development. </p>
+	</center>
+
+	<div class="content-div"></div>
+
+	<center>
+		<h2> Real-world Results </h2>
+	</center>
+	<div class="content-div"></div>
+	<div class="col">
+		<center><video playsinline autoplay loop muted controls src="videos/teaser_web.mp4" width="100%" preload="metadata"
+			   style="border-radius:10px;"></video>
+		</center>
+	</div>
+
+	<center>
+		<div class="section-div"></div>
+		<h2> Method </h2>
+		<div class="content-div"></div>
+		<img class="img-fluid" src="res/method.png" style="margin-bottom: 30px" width="75%" alt=""><br>
+
+		<p style="width:75%; text-align: justify; white-space: normal;"> An overview of our approach. We first train an oracle policy in simulation using reinforcement learning. This policy provides high-quality trajectory and action datasets. We use this dataset to train a student policy and as an open-loop controller in the real world to collect successful real-world trajectories. Finally, we fine-tune the student policy using this real-world dataset. </p>
+
+	</center>
+
+
+	<div class="section-div"></div>
+	<center>
+	<h2> Qualitative Comparison for Oracle Policy </h2>
+	</center>
+	<div class="content-div"></div>
+	<div class="row align-items-center">
+		<div class="col-md-4 align-column-center">
+			<center>
+				<h5> Our Method. </h5>
+				Emergent Fingergaiting. <br>
+				Continuous Spinning.
+			</center>
+			<div class="content-div"></div>
+			<center>
+				<video playsinline autoplay loop muted src="videos/ours.mp4" width="99%" style="border-radius:10px;"></video>
+			</center>
+		</div>
+		<div class="col-md-4 align-column-center">
+			<center>
+				<h5> Single Canonical Pose </h5>
+				No Fingergaiting. <br>
+				Inefficient exploration.
+				<div class="content-div"></div>
+				<video playsinline autoplay loop muted src="videos/sim_single_init.mp4" width="99%" style="border-radius:10px;"></video>
+			</center>
+		</div>
+		<div class="col-md-4 align-column-center">
+			<center>
+				<h5> Without Z-reward </h5>
+				Objects tilted in certain timesteps. <br>
+				Easily slip in the real-world. <br>
+				<div class="content-div"></div>
+				<video playsinline autoplay loop muted src="videos/sim_no_z.mp4" width="99%" style="border-radius:10px;"></video>
+			</center>
+		</div>
+	</div>
+
+
+	<div class="section-div"></div>
+	<center>
+	<h2> Failure Cases (Baselines) </h2>
+	</center>
+	<div class="content-div"></div>
+	<div class="row align-items-center">
+		<div class="col-md-4 align-column-center">
+			<center>
+				<h5> Open-loop Replay </h5>
+				The motion is reasonable but not reactive and generalizable enough.
+				<div class="content-div"></div>
+				<video playsinline autoplay loop muted src="videos/fail_teacher_replay.mp4" width="99%" style="border-radius:10px;"></video>
+			</center>
+		</div>
+		<div class="col-md-4 align-column-center">
+			<center>
+				<h5> Simulation Pre-training Only </h5>
+				Not able to finish the task since the large sim-to-real gap.
+				<div class="content-div"></div>
+				<video playsinline autoplay loop muted src="videos/fail_only_pretraining.mp4" width="99%" style="border-radius:10px;"></video>
+			</center>
+		</div>
+		<div class="col-md-4 align-column-center">
+			<center>
+				<h5> Vision Distillation </h5>
+				Object oscillates resulting in large OOD error for vision systems.
+				<div class="content-div"></div>
+				<video playsinline autoplay loop muted src="videos/fail_vision.mp4" width="99%" style="border-radius:10px;"></video>
+			</center>
+		</div>
+	</div>
+
+	<div class="section-div"></div>
+	<center>
+	<h2> Failure Cases (Our Method) </h2>
+	</center>
+	<div class="content-div"></div>
+	<div class="row align-items-center">
+		<div class="col-md-4 align-column-center">
+			<center>
+Control Frequency not high enough to catch fast falling objects.
+			<div class="content-div"></div>
+				<video playsinline autoplay loop muted src="videos/ours_fail1.mp4" width="99%"
+				       style="border-radius:10px;"></video>
+			</center>
+		</div>
+		<div class="col-md-4 align-column-center">
+			<center>
+Control Frequency not high enough to catch fast falling objects.
+				<div class="content-div"></div>
+				<video playsinline autoplay loop muted src="videos/ours_fail2.mp4" width="99%"
+				       style="border-radius:10px;"></video>
+			</center>
+		</div>
+		<div class="col-md-4 align-column-center">
+			<center>
+				Center-of-mass shifts during spinning, resulting in unstable configuration.
+				<div class="content-div"></div>
+				<video playsinline autoplay loop muted src="videos/ours_fail3.mp4" width="99%"
+				       style="border-radius:10px;"></video>
+			</center>
+		</div>
+	</div>
+
+	<!--------------------- Bibtex --------------------->
+	<div class="section-div"></div>
+	<center><h2> Bibtex </h2></center>
+	<div class="content-div"></div>
+	<pre>
+	  @article{wang2024penspin,
+	     author={Wang, Jun and Yuan, Ying and Che, Haichuan and Qi, Haozhi and Ma, Yi and Malik, Jitendra and Wang, Xiaolong},
+	     title={Lessons from Learning to Spin “Pens”},
+	     article={},
+	     year={2024}
+	   }
+	</pre>
+
+	<!--------------------- Acknowledgement --------------------->
+	<center>
+		<h2> Acknowledgement </h2>
+		<div class="content-div"></div>
+		<p style="width:75%; text-align: justify; white-space: normal;"> The simulation visualization in paper are created by <a href="https://github.com/nerfstudio-project/viser" target="_blank"> Viser</a>.</p>
+
+		<p style="width:75%; text-align: justify; white-space: normal;"> Xiaolong Wang’s lab is supported, in part, by Amazon Research Award, Intel Rising Star Faculty Award, and Qualcomm Innovation Fellowship. Haozhi Qi and Jitendra Malik are supported in part by ONR MURI N0001421-1-2801. Haozhi Qi and Yi Ma are supported in part by ONR N00014-22-1-2102. </p>
+	</center>
+
+	<div class="section-div"></div>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
