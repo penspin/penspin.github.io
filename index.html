@@ -225,8 +225,28 @@ Control Frequency not high enough to catch fast falling objects.
 		</div>
 	</div>
 
-	<!--------------------- Bibtex --------------------->
 	<div class="section-div"></div>
+	<center>
+	<h2> Lessons Learned </h2>
+	</center>
+	<div class="content-div"></div>
+	<div class="row align-items-center">
+		<div style="width: 12.5%">
+		</div>
+		<div style="width:75%; hyphens: auto; ">
+			<ul>
+				<li><b>Simulation training requires extensive design for exploration</b>, such as the proper design of initial distributions to aid exploration and using privileged information to facilitate policy learning.</li>
+				<li><b>Sim-to-Real does not directly work</b> for such contact-rich and highly dynamic tasks. Even when isolating touch and vision, the pure physics sim-to-real gap remains significant and cannot be bridged by extensive domain randomization alone.</li>
+				<li><b>Simulation is still useful for exploring skills.</b> The dynamic skill of spinning pens with a robotic hand is nearly impossible to achieve with human teleoperation and imitation learning alone. Reinforcement learning in simulation is critical for exploring feasible motion.</li>
+				<li><b>Only a few real-world trajectories are needed for fine-tuning.</b> Although a proprioceptive policy learned purely in simulation does not work directly in the real world, it can be fine-tuned to adapt to real-world physics using only a few successful trajectories.</li>
+			</ul>
+		</div>
+		<div style="width: 12.5%">
+		</div>
+	</div>
+
+	<!--------------------- Bibtex --------------------->
+	<div class="content-div"></div>
 	<center><h2> Bibtex </h2></center>
 	<div class="content-div"></div>
 	<pre>
