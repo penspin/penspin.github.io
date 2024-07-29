@@ -114,12 +114,31 @@
 
 	<center>
 		<div class="section-div"></div>
-		<h2> Method </h2>
+		<h2> Sim-to-Real does not work for Pen Spinning </h2>
+
+		<p style="width:75%; text-align: justify; white-space: normal;">
+			Despite the great progress in sim-to-real for in-hand manipulation, we find that it does not directly apply to our task due to the large sim-to-real gap.
+			While this gap generally exists in previous work, the extreme difficulty of spinning pen-like objects exacerbates it further.
+			Although we did extensive exploration and iterations on hardware design, object selection, and different input modalities, we have not achieved any success.
+			The object is always easily dropped or even completely fails due to the distribution shift.
+		</p>
+
+		<center>
+			<video playsinline autoplay loop muted controls src="videos/sim2real_fail1.mp4" width="99%" style="border-radius:10px;"></video>
+		</center>
+
+		<center>
+			<video playsinline autoplay loop muted controls src="videos/sim2real_fail2.mp4" width="99%" style="border-radius:10px;"></video>
+		</center>
+	</center>
+
+	<center>
+		<div class="section-div"></div>
+		<h2> How did we achieve this? </h2>
 		<div class="content-div"></div>
 		<img class="img-fluid" src="res/method.png" style="margin-bottom: 30px" width="75%" alt=""><br>
 
 		<p style="width:75%; text-align: justify; white-space: normal;"> An overview of our approach. We first train an oracle policy in simulation using reinforcement learning. This policy provides high-quality trajectory and action datasets. We use this dataset to train a student policy and as an open-loop controller in the real world to collect successful real-world trajectories. Finally, we fine-tune the student policy using this real-world dataset. </p>
-
 	</center>
 
 
